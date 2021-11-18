@@ -1,6 +1,10 @@
 package br.com.zupacademy.natacha.transacao.transacao;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class CartaoConsumer {
+
 
     private String id;
     private String email;
@@ -17,7 +21,7 @@ public class CartaoConsumer {
     @Override
     public String toString() {
         return "CartaoConsumer{" +
-                "id='" + id + '\'' +
+                "idCartao='" + id+ '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

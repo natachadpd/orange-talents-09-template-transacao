@@ -6,8 +6,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class ListenerDeTransacao {
 
-    @KafkaListener(topics = "${spring.kafka.topic.transactions}")
-    public void ouvir(EventoDeTransacao eventoDeTransacao) {
-        System.out.println(eventoDeTransacao);
+    private EventoDeTransacaoRepository repository;
+
+    public ListenerDeTransacao(EventoDeTransacaoRepository repository){
+        this.repository = repository;
     }
+
+    @KafkaListener(topics = "${spring.kafka.topic.transactions}")
+    public void ouvir(EventoDeTransacaoResponse transacaoResponse) {
+        EventoDeTransacao transacao = transacaoResponse.toModel();
+        repository.save(transacao);
+    }
+
+
 }

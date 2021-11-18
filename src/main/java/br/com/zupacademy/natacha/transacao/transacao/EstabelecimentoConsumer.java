@@ -1,5 +1,8 @@
 package br.com.zupacademy.natacha.transacao.transacao;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class EstabelecimentoConsumer {
 
     private String nome;
